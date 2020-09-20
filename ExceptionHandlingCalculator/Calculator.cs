@@ -14,8 +14,8 @@ namespace ExceptionHandlingCalculator
             }
             else
             {
-                Console.WriteLine("Unknown Operation");
-                return 0;
+                throw new ArgumentOutOfRangeException(nameof(operation),
+                    "The operation you entered is not supported");
             }
         }
 
