@@ -30,7 +30,7 @@ namespace ExceptionHandlingCalculator
 
             try
             {
-                var result = calculator.Calculate(number1, number2, Console.ReadLine().ToUpperInvariant());
+                var result = calculator.Calculate(number1, number2, null);
                 Console.WriteLine($"Result{result}");
             }
             //Catching all exception and displaying it 
