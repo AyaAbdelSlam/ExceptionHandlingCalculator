@@ -45,7 +45,10 @@ namespace ExceptionHandlingCalculator
             catch (Exception ex)
             {
                 Console.WriteLine($"Sorry, Something went wrong, {ex.Message}");
-
+            }
+            finally
+            {
+                Console.WriteLine("..........Finally...........");
             }
         }
 
