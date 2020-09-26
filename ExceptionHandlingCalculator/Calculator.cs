@@ -17,7 +17,24 @@ namespace ExceptionHandlingCalculator
 
             if (nonNullOperation == "/")
             {
-                return this.Divide(num1, num2);
+                try
+                {
+                    return this.Divide(num1, num2);
+                }
+                catch (DivideByZeroException ex)
+                {
+                    // if we do this we will lose the stacktrace 
+                    //Log.Error(ex);
+                    //throw ex;
+                    // we just have to throw the exception without 
+                    // referencing it it will keep the stacktrace
+                    //throw;
+                    //wrapping an exception in a new one 
+                    // this will wrap the exception without info about the inner exception.
+                    //throw new ArithmeticException();
+                    // this will wrap the exception and will have an information of the inner expception.
+                    throw new ArithmeticException("An error happened when calculation.", ex);
+                }
             }
             else
             {
