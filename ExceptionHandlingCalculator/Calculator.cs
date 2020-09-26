@@ -8,6 +8,10 @@ namespace ExceptionHandlingCalculator
     {
         public int Calculate(int num1, int num2, string operation)
         {
+            if(operation == null)
+            {
+                throw new ArgumentNullException(nameof(operation));
+            }
             if (operation == "/")
             {
                 return this.Divide(num1, num2);
