@@ -33,6 +33,14 @@ namespace ExceptionHandlingCalculator
                 var result = calculator.Calculate(number1, number2, null);
                 Console.WriteLine($"Result{result}");
             }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"Operation was not Provided. {ex}");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine($"Operation is not Provided. {ex}");
+            }
             //Catching all exception and displaying it 
             catch (Exception ex)
             {
