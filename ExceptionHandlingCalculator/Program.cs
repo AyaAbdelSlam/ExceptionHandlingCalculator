@@ -25,7 +25,7 @@ namespace ExceptionHandlingCalculator
             //catch 
             //{
             //    Console.WriteLine("Sorry, Something went wrong.");
-                
+
             //}
 
             try
@@ -33,9 +33,13 @@ namespace ExceptionHandlingCalculator
                 var result = calculator.Calculate(number1, number2, null);
                 Console.WriteLine($"Result{result}");
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException ex) when (ex.ParamName == "operation")
             {
                 Console.WriteLine($"Operation was not Provided. {ex}");
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"An Argument was null. {ex}");
             }
             catch (ArgumentOutOfRangeException ex)
             {
