@@ -32,25 +32,32 @@ namespace ExceptionHandlingCalculator
 
             try
             {
-                var result = calculator.Calculate(number1, number2, null);
+                var result = calculator.Calculate(number1, number2, Console.ReadLine().ToUpperInvariant());
                 Console.WriteLine($"Result{result}");
             }
-            catch (ArgumentNullException ex) when (ex.ParamName == "operation")
+            //catch (ArgumentNullException ex) when (ex.ParamName == "operation")
+            //{
+            //    Console.WriteLine($"Operation was not Provided. {ex}");
+            //}
+            //catch (ArgumentNullException ex)
+            //{
+            //    Console.WriteLine($"An Argument was null. {ex}");
+            //}
+            //catch (ArgumentOutOfRangeException ex)
+            //{
+            //    Console.WriteLine($"Operation is not Provided. {ex}");
+            //}
+            //Using Custom Exceptions
+            // since CalculationOperationNotSupportedException is drived from CalculationExcepiton
+            //it will subscribe in this catch block
+            catch (CalculatorException ex)
             {
-                Console.WriteLine($"Operation was not Provided. {ex}");
-            }
-            catch (ArgumentNullException ex)
-            {
-                Console.WriteLine($"An Argument was null. {ex}");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Console.WriteLine($"Operation is not Provided. {ex}");
+                Console.WriteLine(ex);
             }
             //Catching all exception and displaying it 
             catch (Exception ex)
             {
-                Console.WriteLine($"Sorry, Something went wrong, {ex.Message}");
+                Console.WriteLine($"Sorry, Something went wrong, {ex}");
             }
             finally
             {

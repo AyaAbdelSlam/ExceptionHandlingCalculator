@@ -21,7 +21,7 @@ namespace ExceptionHandlingCalculator
                 {
                     return this.Divide(num1, num2);
                 }
-                catch (DivideByZeroException ex)
+                catch (ArithmeticException ex)
                 {
                     // if we do this we will lose the stacktrace 
                     //Log.Error(ex);
@@ -33,13 +33,20 @@ namespace ExceptionHandlingCalculator
                     // this will wrap the exception without info about the inner exception.
                     //throw new ArithmeticException();
                     // this will wrap the exception and will have an information of the inner expception.
-                    throw new ArithmeticException("An error happened when calculation.", ex);
+                    //throw new ArithmeticException("An error happened when calculation.", ex);
+
+                    //Using Custom Exceptions
+                    throw new CalculatorException(ex);
                 }
             }
             else
             {
-                throw new ArgumentOutOfRangeException(nameof(operation),
-                    "The operation you entered is not supported");
+                //throw new ArgumentOutOfRangeException(nameof(operation),
+                //    "The operation you entered is not supported");
+
+                //Using Custom Exceptions
+                throw new CalculationOperationNotSupportedException(operation);
+
             }
         }
 
