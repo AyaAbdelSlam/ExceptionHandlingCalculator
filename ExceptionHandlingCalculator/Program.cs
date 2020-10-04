@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ExceptionHandlingCalculator
 {
@@ -52,6 +53,7 @@ namespace ExceptionHandlingCalculator
             //it will subscribe in this catch block
             catch (CalculatorException ex)
             {
+                ex.Data.Add("user", Thread.CurrentPrincipal.Identity.Name);
                 Console.WriteLine(ex);
             }
             //Catching all exception and displaying it 
